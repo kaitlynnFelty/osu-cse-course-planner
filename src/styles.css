@@ -7,7 +7,7 @@
   --slot-bg:#eaeaea;
 }
 
-/* Base page styling */
+/* base page styling */
 body{
   margin:0;
   font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
@@ -20,7 +20,7 @@ body{
   margin:0 auto;
 }
 
-/* Header */
+/* header */
 .main-title{
   text-align:center;
   font-size:28px;
@@ -35,7 +35,7 @@ body{
   margin:0 0 20px;
 }
 
-/* Unified grid: years + semesters + term slots */
+/* unified grid: years + semesters + term slots */
 .flow{
   display:grid;
   grid-template-columns:repeat(8,minmax(160px,1fr));
@@ -44,7 +44,7 @@ body{
   margin-bottom:30px;
 }
 
-/* YEARS (row 1) */
+/* years (row 1) */
 .year{
   grid-row:1;
   background:var(--year-bg);
@@ -60,7 +60,7 @@ body{
 .y3{ grid-column:5 / span 2; }
 .y4{ grid-column:7 / span 2; }
 
-/* SEMESTERS (row 2) */
+/* semesters (row 2) */
 .sem{
   grid-row:2;
   background:var(--year-bg);
@@ -76,18 +76,16 @@ body{
 .s5{ grid-column:5; } .s6{ grid-column:6; }
 .s7{ grid-column:7; } .s8{ grid-column:8; }
 
-/* TERM COLUMNS (row 3) */
+/* term columns (row 3) */
 .term-col{
   grid-row:3;
-  /* no border/background – just a column of cells */
   border:none;
   background:transparent;
   padding:0;
 
   display:grid;
-  /* 5 equal “rows” inside each column */
-  grid-auto-rows:100px;   /* or 120px if you want taller boxes */
-  row-gap:0;              /* no gaps between cells, like the example */
+  grid-auto-rows:100px;
+  row-gap:0;
 }
 
 .term-col h3{
@@ -101,7 +99,7 @@ body{
 .c5{ grid-column:5; } .c6{ grid-column:6; }
 .c7{ grid-column:7; } .c8{ grid-column:8; }
 
-/* Slot cards */
+/* slot cards */
 .slot{
   background:var(--slot-bg);
   border:1px solid #ddd;
@@ -118,8 +116,7 @@ body{
   justify-content:center;
   height:100%;
 }
-
-/* Credits row aligned to grid */
+/* credits grid */
 .credits-grid{
   display:grid;
   grid-template-columns:repeat(8, minmax(160px, 1fr));
@@ -132,7 +129,6 @@ body{
   letter-spacing:.02em;
 }
 
-/* Dashed lines spanning all columns */
 .dash-top,
 .dash-bottom{
   grid-column:1 / -1;
@@ -144,21 +140,26 @@ body{
   padding:12px 0;
 }
 
-
-
-/* Footer */
 .site-footer{
   text-align:center;
   padding:20px 0;
   color:#555;
   font-size:14px;
 }
+
+/* course box styling */
 .course {
-  background:#f5f5f5;          /* light grey like the example */
-  border:1px solid #ccc;       /* thin grid borders */
+  background:#f5f5f5;
+  border:1px solid #ccc;
   padding:6px 8px;
   font-size:13px;
   display:block;
+  cursor:pointer;
+  transition:
+    transform 0.25s ease,
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .course-name {
@@ -168,12 +169,46 @@ body{
 
 .course-extra {
   color:var(--muted);
-  font-style:italic;           /* subtitle look */
-  margin-bottom:4px;           /* a bit more space above credits */
+  font-style:italic;
+  margin-bottom:4px;
 }
 
 .course-credits {
   font-size:12px;
   text-align:right;
   color:#333;
+}
+
+/* hovering course animation below */
+.course.hover {
+  background:#fff8b5;               
+  transform:scale(1.05);
+  border-color:#f1c40f;
+  box-shadow:0 0 12px rgba(241,196,15,0.6);
+  z-index:5;
+}
+
+/* prereqs hover */
+.course.prereq {
+  background:#d7ecff;               
+  border-color:#3399ff;
+  box-shadow:0 0 8px rgba(51,153,255,0.4);
+}
+
+/* postreqs hover */
+.course.postreq {
+  background:#ffe6cc;               
+  border-color:#ff9900;
+  box-shadow:0 0 8px rgba(255,153,0,0.4);
+}
+
+/* pulsing animation for fun LOL */
+@keyframes pulseGlow {
+  0%   { box-shadow:0 0 6px rgba(241,196,15,0.4); }
+  50%  { box-shadow:0 0 12px rgba(241,196,15,0.8); }
+  100% { box-shadow:0 0 6px rgba(241,196,15,0.4); }
+}
+
+.course.hover {
+  animation:pulseGlow 1.5s infinite;
 }
