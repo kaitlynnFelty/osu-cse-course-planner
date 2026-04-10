@@ -13,6 +13,48 @@
   </header>
 
   <main class="page">
+    <section class="details-bubbles" aria-labelledby="details-title">
+      <div class="bubble-header">
+        <p class="details-eyebrow">Course Details</p>
+        <h3 id="details-title">Select a course</h3>
+        <p id="details-summary" class="details-summary">
+          Hover over a course to preview its dependencies, then click to keep it selected.
+        </p>
+      </div>
+
+      <div class="bubble-strip">
+        <div class="detail-bubble">
+          <span class="bubble-label">Course</span>
+          <span id="details-code" class="bubble-value">--</span>
+        </div>
+
+        <div class="detail-bubble detail-bubble-wide">
+          <span class="bubble-label">Title</span>
+          <span id="details-name" class="bubble-value">--</span>
+        </div>
+
+        <div class="detail-bubble">
+          <span class="bubble-label">Term</span>
+          <span id="details-term" class="bubble-value">--</span>
+        </div>
+
+        <div class="detail-bubble">
+          <span class="bubble-label">Credits</span>
+          <span id="details-credits" class="bubble-value">--</span>
+        </div>
+
+        <div class="detail-bubble detail-bubble-list">
+          <span class="bubble-label">Prerequisites</span>
+          <span id="details-prereqs" class="bubble-value">None listed</span>
+        </div>
+
+        <div class="detail-bubble detail-bubble-list">
+          <span class="bubble-label">Postrequisites</span>
+          <span id="details-postreqs" class="bubble-value">None listed</span>
+        </div>
+      </div>
+    </section>
+
     <!-- course flow section -->
     <section class="flow">
 
@@ -312,6 +354,6 @@
   </footer>
 
   <!-- js code -->
-  <script type="module" src="src/script.js"></script>
+  <script src="src/script.js"></script>
 </body>
 </html>
